@@ -23,6 +23,6 @@ Pod::Spec.new do |s|
   s.dependency "CryptoSwift", "0.9.0"
   s.dependency "BigInt", "3.0.0"
   s.dependency "GRKOpenSSLFramework"
-  s.dependency "CoreBitcoin", :git => 'https://github.com/ooozws/CoreBitcoin.git'
+  s.dependency "CoreBitcoin"
   s.dependency "secp256k1.swift"
 end
