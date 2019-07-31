@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.author        = { "James Chen" => "james@ashchan.com" }
   s.platform      = :ios, "9.0"
 
-  s.source        = { :git => "https://github.com/consenlabs/ios-token-core.git", :tag => "#{s.version}" }
+  s.source        = { :git => "https://github.com/ooozws/ios-token-core.git", :tag => "#{s.version}" }
   s.source_files  = "Sources/**/*.{h,m,swift}"
   s.swift_version = "4.0"
   s.static_framework = true
