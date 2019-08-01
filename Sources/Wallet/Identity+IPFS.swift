@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import CoreBitcoin
+import CoreBitcoinSwift
 
 // Encrypt data
 public extension Identity {

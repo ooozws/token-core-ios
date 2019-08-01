@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import CoreBitcoin
+import CoreBitcoinSwift
 
 public struct PrivateKeyValidator: Validator {
   public typealias Result = String

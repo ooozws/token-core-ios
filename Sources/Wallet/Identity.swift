@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import CoreBitcoin
+import CoreBitcoinSwift
 
 public final class Identity {
   private static var _currentIdentity: Identity?

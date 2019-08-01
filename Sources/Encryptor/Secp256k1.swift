@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import CoreBitcoin.libscrypt
+import CoreBitcoinSwift.libscrypt
 import secp256k1
 
 extension Encryptor {

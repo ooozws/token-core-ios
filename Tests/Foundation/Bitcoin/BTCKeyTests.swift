@@ -8,7 +8,7 @@
 
 import XCTest
 @testable import TokenCore
-@testable import CoreBitcoin
+@testable import CoreBitcoinSwift
 
 class BTCKeyTests: TestCase {
   func testAddress() {

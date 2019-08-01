@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import CoreBitcoin
+import CoreBitcoinSwift
 
 public struct BTCMnemonicKeystore: Keystore, EncMnemonicKeystore, XPrvCrypto {
   static let defaultVersion = 44

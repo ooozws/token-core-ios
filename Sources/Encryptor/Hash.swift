@@ -8,7 +8,7 @@
 
 import Foundation
 import CryptoSwift
-import CoreBitcoin
+import CoreBitcoinSwift
 
 extension Encryptor {
   class Hash {

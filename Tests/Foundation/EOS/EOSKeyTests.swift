@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import CoreBitcoin
+import CoreBitcoinSwift
 @testable import TokenCore
 
 class EOSKeyTests: TestCase {

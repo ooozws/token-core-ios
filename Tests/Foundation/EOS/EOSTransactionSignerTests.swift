@@ -10,7 +10,7 @@ import Foundation
 
 import XCTest
 @testable import TokenCore
-import CoreBitcoin
+import CoreBitcoinSwift
 
 class EOSTransactionSignerTests: TestCase {
 //  func testSignTransacton() {
