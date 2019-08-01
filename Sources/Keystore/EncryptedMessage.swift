@@ -9,7 +9,7 @@
 import Foundation
 
 // Store anything like { encStr: "secertMessage", nonce: "randomBytes" }
-struct EncryptedMessage {
+public struct EncryptedMessage {
   let encStr: String
   let nonce: String
 
