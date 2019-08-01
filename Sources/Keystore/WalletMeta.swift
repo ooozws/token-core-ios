@@ -38,7 +38,7 @@ public struct WalletMeta {
 
   public var segWit = SegWit.none
 
-  let timestamp: Double
+  public let timestamp: Double
   let version: String
   var backup: [String] = []
 
