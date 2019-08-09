@@ -22,33 +22,33 @@ public protocol Keystore {
   func verify(password: String) -> Bool
 }
 
-protocol ExportableKeystore: Keystore {
+public protocol ExportableKeystore: Keystore {
   func export() -> String
 }
 
-extension ExportableKeystore {
+public extension ExportableKeystore {
   func export() -> String {
     let json = getStardandJSON()
     return prettyJSON(json)
   }
 }
 
-protocol PrivateKeyCrypto {
+public protocol PrivateKeyCrypto {
   var crypto: Crypto { get }
   func decryptPrivateKey(_ password: String) -> String
 }
 
-protocol WIFCrypto {
+public protocol WIFCrypto {
   var crypto: Crypto { get }
   func decryptWIF(_ password: String) -> String
 }
 
-protocol XPrvCrypto {
+public protocol XPrvCrypto {
   var crypto: Crypto { get }
   func decryptXPrv(_ password: String) -> String
 }
 
-protocol EncMnemonicKeystore {
+public protocol EncMnemonicKeystore {
   var encMnemonic: EncryptedMessage { get }
   var crypto: Crypto { get }
   var mnemonicPath: String { get }
