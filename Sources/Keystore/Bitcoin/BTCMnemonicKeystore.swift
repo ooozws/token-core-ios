@@ -22,8 +22,8 @@ public struct BTCMnemonicKeystore: Keystore, EncMnemonicKeystore, XPrvCrypto {
   public let crypto: Crypto
   public var meta: WalletMeta
   public let address: String
-  let mnemonicPath: String
-  let encMnemonic: EncryptedMessage
+  public let mnemonicPath: String
+  public let encMnemonic: EncryptedMessage
   let xpub: String
 
   init(password: String, mnemonic: Mnemonic, path: String, metadata: WalletMeta, id: String? = nil) throws {
