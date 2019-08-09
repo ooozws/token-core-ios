@@ -92,20 +92,20 @@ public extension Keystore {
   }
 }
 
-extension PrivateKeyCrypto {
+public extension PrivateKeyCrypto {
   func decryptPrivateKey(_ password: String) -> String {
     return crypto.privateKey(password: password)
   }
 }
 
-extension EncMnemonicKeystore {
+public extension EncMnemonicKeystore {
   func decryptMnemonic(_ password: String) -> String {
     let mnemonicHexStr = encMnemonic.decrypt(crypto: crypto, password: password)
     return mnemonicHexStr.tk_fromHexString()
   }
 }
 
-extension XPrvCrypto {
+public extension XPrvCrypto {
   func decryptXPrv(_ password: String) -> String {
     return crypto.privateKey(password: password).tk_fromHexString()
   }
