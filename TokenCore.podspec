@@ -19,10 +19,10 @@ Pod::Spec.new do |s|
   s.source        = { :git => "https://github.com/ooozws/ios-token-core.git", :tag => "#{s.version}" }
   s.source_files  = "Sources/**/*.{h,m,swift}"
   s.swift_version = "4.0"
-  s.pod_target_xcconfig = {
-    'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/Crashlytics',
-    'OTHER_LDFLAGS'          => '$(inherited) -undefined dynamic_lookup'
-  }
+#  s.pod_target_xcconfig = {
+#    'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/Crashlytics',
+#    'OTHER_LDFLAGS'          => '$(inherited) -undefined dynamic_lookup'
+#  }
   s.dependency "CryptoSwift", "0.9.0"
   s.dependency "BigInt", "3.0.0"
   s.dependency "GRKOpenSSLFramework"

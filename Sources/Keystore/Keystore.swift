@@ -22,33 +22,33 @@ public protocol Keystore {
   func verify(password: String) -> Bool
 }
 
-protocol ExportableKeystore: Keystore {
+public protocol ExportableKeystore: Keystore {
   func export() -> String
 }
 
-extension ExportableKeystore {
+public extension ExportableKeystore {
   func export() -> String {
     let json = getStardandJSON()
     return prettyJSON(json)
   }
 }
 
-protocol PrivateKeyCrypto {
+public protocol PrivateKeyCrypto {
   var crypto: Crypto { get }
   func decryptPrivateKey(_ password: String) -> String
 }
 
-protocol WIFCrypto {
+public protocol WIFCrypto {
   var crypto: Crypto { get }
   func decryptWIF(_ password: String) -> String
 }
 
-protocol XPrvCrypto {
+public protocol XPrvCrypto {
   var crypto: Crypto { get }
   func decryptXPrv(_ password: String) -> String
 }
 
-protocol EncMnemonicKeystore {
+public protocol EncMnemonicKeystore {
   var encMnemonic: EncryptedMessage { get }
   var crypto: Crypto { get }
   var mnemonicPath: String { get }
@@ -92,20 +92,20 @@ public extension Keystore {
   }
 }
 
-extension PrivateKeyCrypto {
+public extension PrivateKeyCrypto {
   func decryptPrivateKey(_ password: String) -> String {
     return crypto.privateKey(password: password)
   }
 }
 
-extension EncMnemonicKeystore {
+public extension EncMnemonicKeystore {
   func decryptMnemonic(_ password: String) -> String {
     let mnemonicHexStr = encMnemonic.decrypt(crypto: crypto, password: password)
     return mnemonicHexStr.tk_fromHexString()
   }
 }
 
-extension XPrvCrypto {
+public extension XPrvCrypto {
   func decryptXPrv(_ password: String) -> String {
     return crypto.privateKey(password: password).tk_fromHexString()
   }
