@@ -9,7 +9,7 @@
 import Foundation
 import CoreBitcoinSwift
 
-struct EOSKeystore: Keystore, EncMnemonicKeystore {
+public struct EOSKeystore: Keystore, EncMnemonicKeystore {
   static let defaultVersion = 10001
   static let chainID = "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906"
   let id: String
@@ -24,7 +24,7 @@ struct EOSKeystore: Keystore, EncMnemonicKeystore {
 
   /// Init with privaate keys and permissions.
   /// Private keys are WIF keys.
-  init(accountName: String = "", password: String, privateKeys: [String], permissions: [EOS.PermissionObject], metadata: WalletMeta, id: String? = nil) throws {
+  public init(accountName: String = "", password: String, privateKeys: [String], permissions: [EOS.PermissionObject], metadata: WalletMeta, id: String? = nil) throws {
     self.id = id ?? EOSKeystore.generateKeystoreId()
     address = try EOSAccountNameValidator(accountName).validate()
     meta = metadata
@@ -46,7 +46,7 @@ struct EOSKeystore: Keystore, EncMnemonicKeystore {
     crypto.clearDerivedKey()
   }
 
-  init(accountName: String = "", password: String, mnemonic: Mnemonic, path: String, permissions: [EOS.PermissionObject], metadata: WalletMeta, id: String? = nil) throws {
+  public init(accountName: String = "", password: String, mnemonic: Mnemonic, path: String, permissions: [EOS.PermissionObject], metadata: WalletMeta, id: String? = nil) throws {
     self.id = id ?? EOSKeystore.generateKeystoreId()
     address = try EOSAccountNameValidator(accountName).validate()
     mnemonicPath = path
@@ -61,7 +61,7 @@ struct EOSKeystore: Keystore, EncMnemonicKeystore {
   }
 
   // MARK: - JSON
-  init(json: JSONObject) throws {
+  public init(json: JSONObject) throws {
     guard
       let cryptoJson = (json["crypto"] as? JSONObject) ?? (json["Crypto"] as? JSONObject),
       json["version"] as? Int == version
@@ -89,7 +89,7 @@ struct EOSKeystore: Keystore, EncMnemonicKeystore {
     }
   }
 
-  func decryptPrivateKey(from publicKey: String, password: String) throws -> [UInt8] {
+  public func decryptPrivateKey(from publicKey: String, password: String) throws -> [UInt8] {
     
     guard verify(password: password) else {
       throw PasswordError.incorrect
