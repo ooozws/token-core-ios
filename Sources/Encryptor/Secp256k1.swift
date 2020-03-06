@@ -20,7 +20,9 @@ extension Encryptor {
     static let failureSignResult = SignResult(signature: "", recid: 0)
     private let signatureLength = 64
     private let keyLength = 64
-
+    public init(){
+      
+    }
     /// Sign a message with a key and return the result.
     /// - Parameter key: Key in hex format.
     /// - Parameter message: Message in hex format.
