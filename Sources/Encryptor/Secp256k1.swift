@@ -25,7 +25,7 @@ extension Encryptor {
     /// - Parameter key: Key in hex format.
     /// - Parameter message: Message in hex format.
     /// - Returns: Signature as a `SignResult`.
-    func sign(key: String, message: String) -> SignResult {
+    public func sign(key: String, message: String) -> SignResult {
       guard let keyBytes = key.tk_dataFromHexString()?.bytes,
         let messageBytes = message.tk_dataFromHexString()?.bytes else {
           return  Secp256k1.failureSignResult
@@ -60,7 +60,7 @@ extension Encryptor {
     /// - Parameter message: Raw message before signing.
     /// - Parameter recid: recid.
     /// - Returns: Recoverd public key.
-    func recover(signature: String, message: String, recid: Int32) -> String? {
+    public func recover(signature: String, message: String, recid: Int32) -> String? {
       guard let signBytes = signature.tk_dataFromHexString()?.bytes,
         let messageBytes = message.tk_dataFromHexString()?.bytes else {
           return nil
@@ -100,7 +100,7 @@ extension Encryptor {
     /// - Parameter message: Raw message before signing.
     /// - Parameter recid: recid.
     /// - Returns: Recoverd public key.
-    func eosRecover(signature: Data, message: Data, recid: Int32) -> String? {
+    public func eosRecover(signature: Data, message: Data, recid: Int32) -> String? {
 //      guard let signBytes = signature.tk_dataFromHexString()?.bytes,
 //        let messageBytes = message.tk_dataFromHexString()?.bytes else {
 //          return nil
@@ -141,7 +141,7 @@ extension Encryptor {
     /// Verify a key.
     /// - Parameter key: Key in hex format.
     /// - Returns: true if verified, otherwise return false.
-    func verify(key: String) -> Bool {
+    public func verify(key: String) -> Bool {
       if key.count != keyLength || !Hex.isHex(key) {
         return false
       }
