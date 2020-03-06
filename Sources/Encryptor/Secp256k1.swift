@@ -12,8 +12,8 @@ import secp256k1
 
 extension Encryptor {
   public struct SignResult {
-    let signature: String // Hex format
-    let recid: Int32
+    public let signature: String // Hex format
+    public let recid: Int32
   }
 
   public class Secp256k1 {
