@@ -11,12 +11,12 @@ import CoreBitcoinSwift.libscrypt
 import secp256k1
 
 extension Encryptor {
-  struct SignResult {
+  public struct SignResult {
     let signature: String // Hex format
     let recid: Int32
   }
 
-  class Secp256k1 {
+  public class Secp256k1 {
     static let failureSignResult = SignResult(signature: "", recid: 0)
     private let signatureLength = 64
     private let keyLength = 64
