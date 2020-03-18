@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
 #    'OTHER_LDFLAGS'          => '$(inherited) -undefined dynamic_lookup'
 #  }
   s.dependency "CryptoSwift", "0.9.0"
-  s.dependency "BigInt", "3.0.0"
+  s.dependency "BigInt", "3.1"
   s.dependency "GRKOpenSSLFramework"
   s.dependency "CoreBitcoinSwift"
   s.dependency "secp256k1.swift"
