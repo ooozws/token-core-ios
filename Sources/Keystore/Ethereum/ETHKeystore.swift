@@ -9,11 +9,11 @@
 import Foundation
 
 public struct ETHKeystore: ExportableKeystore, PrivateKeyCrypto {
-  let id: String
-  let version = 3
-  var address: String
-  let crypto: Crypto
-  var meta: WalletMeta
+  public let id: String
+  public let version = 3
+  public var address: String
+  public let crypto: Crypto
+  public var meta: WalletMeta
 
   // Import from private key
   public init(password: String, privateKey: String, metadata: WalletMeta, id: String? = nil) throws {
