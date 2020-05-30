@@ -76,7 +76,7 @@ public struct BTCMnemonicKeystore: Keystore, EncMnemonicKeystore, XPrvCrypto {
     return xpub
   }
 
-  func calcExternalAddress(at index: Int) -> String {
+  public func calcExternalAddress(at index: Int) -> String {
     let indexKey = BTCKeychain(extendedKey: xpub).derivedKeychain(withPath: "/0/\(index)").key!
     return indexKey.address(on: meta.network, segWit: meta.segWit).string
   }
