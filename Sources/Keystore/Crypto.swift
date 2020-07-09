@@ -44,7 +44,7 @@ public class Crypto {
          If true, the caller can fetch derived key with `cachedDerivedKey(with password:)`,
          and should explictly call `clearDerivedKey()` afterwards.
    */
-  init(password: String, privateKey: String, cacheDerivedKey: Bool = false) {
+  public init(password: String, privateKey: String, cacheDerivedKey: Bool = false) {
     cipher = .aes128Ctr
     cipherparams = Cipherparams()
     kdf = .scrypt
@@ -59,7 +59,7 @@ public class Crypto {
     mac = Encryptor.Keccak256().encrypt(hex: macHex)
   }
 
-  init(json: JSONObject) throws {
+  public init(json: JSONObject) throws {
     guard let ciphertext = json["ciphertext"] as? String,
       let cipherparamsJson = json["cipherparams"] as? JSONObject,
       let kdfparamsJson = json["kdfparams"] as? JSONObject,
