@@ -155,7 +155,7 @@ extension Crypto {
   }
 
   // Create encryptor with key and nonce
-  public func encryptor(from key: String, nonce: String, AESMode: Encryptor.AES128.Mode? = nil) -> Encryptor.AES128 {
+  func encryptor(from key: String, nonce: String, AESMode: Encryptor.AES128.Mode? = nil) -> Encryptor.AES128 {
     let mode = AESMode ?? Crypto.aesMode(cipher: .aes128Ctr)
     return Encryptor.AES128(key: key, iv: nonce, mode: mode)
   }
