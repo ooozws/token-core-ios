@@ -88,7 +88,7 @@ public class Crypto {
     self.mac = mac
   }
 
-  func toJSON() -> JSONObject {
+  public func toJSON() -> JSONObject {
     return [
       "cipher": cipher.rawValue,
       "ciphertext": ciphertext,
@@ -132,7 +132,7 @@ public extension Crypto {
 // MARK: Public API
 extension Crypto {
   // Derive key with password
-  func derivedKey(with password: String) -> String {
+  public func derivedKey(with password: String) -> String {
     if let cached = cachedDerivedKey.fetch(password: password) {
       return cached
     } else {
@@ -140,7 +140,7 @@ extension Crypto {
     }
   }
 
-  func cachedDerivedKey(with password: String) -> String {
+  public func cachedDerivedKey(with password: String) -> String {
     if let cached = cachedDerivedKey.fetch(password: password) {
       return cached
     } else {
@@ -150,12 +150,12 @@ extension Crypto {
     }
   }
 
-  func clearDerivedKey() {
+  public func clearDerivedKey() {
     cachedDerivedKey.clear()
   }
 
   // Create encryptor with key and nonce
-  func encryptor(from key: String, nonce: String, AESMode: Encryptor.AES128.Mode? = nil) -> Encryptor.AES128 {
+  public func encryptor(from key: String, nonce: String, AESMode: Encryptor.AES128.Mode? = nil) -> Encryptor.AES128 {
     let mode = AESMode ?? Crypto.aesMode(cipher: .aes128Ctr)
     return Encryptor.AES128(key: key, iv: nonce, mode: mode)
   }
