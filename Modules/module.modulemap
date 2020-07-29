@@ -9,7 +9,7 @@ module libsecp256k1 [system][extern_c] {
   export *
 }
 
-module libopenssl [system][extern_c] {
+module openssl [system][extern_c] {
   header "../Vendor/openssl/openssl.framework/Headers/openssl.h"
   export *
 }
