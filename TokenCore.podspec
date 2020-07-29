@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.source        = { :git => "https://github.com/ooozws/ios-token-core.git", :tag => "#{s.version}" }
   s.source_files  = "Sources/**/*.{h,m,swift}", "Modules/*.modulemap", "Vendor/**/*.{h,m,swift,c}"
-  s.vendored_frameworks = 'Vendor/secp256k1/secp256k1.framework',
+  s.vendored_frameworks = 'Vendor/secp256k1/secp256k1.framework'
   
   s.preserve_path = "Modules/module.modulemap"
   s.xcconfig = { "SWIFT_INCLUDE_PATHS" => "$(PODS_ROOT)/TokenCore/Modules"}
