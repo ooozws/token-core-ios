@@ -25,5 +25,4 @@ Pod::Spec.new do |s|
   s.swift_version = "4.0"
   s.dependency "CryptoSwift", "1.3.0"
   s.dependency "BigInt", "4.0"
-  s.dependency "GRKOpenSSLFramework"
 end
