@@ -23,6 +23,7 @@ Pod::Spec.new do |s|
 #    'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/Crashlytics',
 #    'OTHER_LDFLAGS'          => '$(inherited) -undefined dynamic_lookup'
 #  }
+  s.static_framework = true
   s.dependency "CryptoSwift", "1.3.0"
   s.dependency "BigInt", "4.0"
   s.dependency "GRKOpenSSLFramework"
