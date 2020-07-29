@@ -8,7 +8,7 @@
 
 import XCTest
 @testable import TokenCore
-import CoreBitcoinSwift
+import CoreBitcoin
 
 class BTCTransactionSignerTests: TestCase {
   // transaction test will on testnet

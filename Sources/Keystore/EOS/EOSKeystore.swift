@@ -6,7 +6,7 @@
 //  Copyright © 2018 ConsenLabs. All rights reserved.
 //
 
-import CoreBitcoinSwift
+import CoreBitcoin
 import Foundation
 
 public struct EOSKeystore: Keystore, EncMnemonicKeystore {

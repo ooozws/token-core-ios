@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import CoreBitcoinSwift
+import CoreBitcoin
 
 public struct BTCKeystore: Keystore, WIFCrypto {
   public let id: String
