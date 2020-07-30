@@ -262,7 +262,6 @@
 		1AFDB0AC207755C1003B2352 /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFDB0AB207755C1003B2352 /* WalletManager.swift */; };
 		1AFDB0AE207755CE003B2352 /* WalletManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFDB0AD207755CE003B2352 /* WalletManagerTests.swift */; };
 		1AFDB10520775B93003B2352 /* InMemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC7577420721EE100FB2486 /* InMemoryStorage.swift */; };
-		68969E5624D1F922004D0430 /* openssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68969E5524D1F922004D0430 /* openssl.framework */; };
 		701122D92111A148001B79C6 /* invalid_keystores in Resources */ = {isa = PBXBuildFile; fileRef = 701122D82111A148001B79C6 /* invalid_keystores */; };
 		701122DA2111A31E001B79C6 /* invalid_keystores in Resources */ = {isa = PBXBuildFile; fileRef = 701122D82111A148001B79C6 /* invalid_keystores */; };
 		703F93D32150AA5A00240883 /* EOSMigrationOldAlgorithm.json in Resources */ = {isa = PBXBuildFile; fileRef = 703F93D22150AA5A00240883 /* EOSMigrationOldAlgorithm.json */; };
@@ -555,7 +554,6 @@
 		45E1DE551658A6AB107155A2 /* Pods-TokenCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TokenCore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TokenCore/Pods-TokenCore.debug.xcconfig"; sourceTree = "<group>"; };
 		4EEA922915BFA737E7E524B7 /* Pods_TokenCoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TokenCoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5850E4CD9570A72389B42FF3 /* Pods_TokenCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TokenCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		68969E5524D1F922004D0430 /* openssl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = openssl.framework; sourceTree = "<group>"; };
 		701122D82111A148001B79C6 /* invalid_keystores */ = {isa = PBXFileReference; lastKnownFileType = folder; path = invalid_keystores; sourceTree = "<group>"; };
 		703F93D22150AA5A00240883 /* EOSMigrationOldAlgorithm.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EOSMigrationOldAlgorithm.json; sourceTree = "<group>"; };
 		70495646211AC62300C87673 /* EOSSignTestcase.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EOSSignTestcase.txt; sourceTree = "<group>"; };
@@ -577,7 +575,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68969E5624D1F922004D0430 /* openssl.framework in Frameworks */,
 				EE11DC7E362CB23BA8500145 /* Pods_TokenCore.framework in Frameworks */,
 				1A510BA5206B589600886483 /* secp256k1.framework in Frameworks */,
 			);
@@ -842,7 +839,6 @@
 		1A6927A02069D31D00404E68 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				68969E5124D1F886004D0430 /* openssl */,
 				1AC7C94E206B586700A78F7E /* secp256k1 */,
 				1A6927A32069D31D00404E68 /* CoreBitcoin */,
 				1A6928352069D31D00404E68 /* libscrypt */,
@@ -1176,14 +1172,6 @@
 				DF069C9E03215FFF56779962 /* Pods-TokenCoreTests.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		68969E5124D1F886004D0430 /* openssl */ = {
-			isa = PBXGroup;
-			children = (
-				68969E5524D1F922004D0430 /* openssl.framework */,
-			);
-			path = openssl;
 			sourceTree = "<group>";
 		};
 		70E3B4D921354B540012FF45 /* keystores */ = {
@@ -1795,7 +1783,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/secp256k1",
-					"$(PROJECT_DIR)/Vendor/openssl",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1814,6 +1801,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Modules";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1836,7 +1824,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/secp256k1",
-					"$(PROJECT_DIR)/Vendor/openssl",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1855,6 +1842,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Modules";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
