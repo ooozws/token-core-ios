@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Kdfparams {
+public protocol Kdfparams {
   init(json: JSONObject) throws
   func toJSON() -> JSONObject
   func derivedKey(for password: String) -> String
@@ -44,11 +44,29 @@ public class Crypto {
          If true, the caller can fetch derived key with `cachedDerivedKey(with password:)`,
          and should explictly call `clearDerivedKey()` afterwards.
    */
-  public init(password: String, privateKey: String, cacheDerivedKey: Bool = false, kdf: Kdf = .scrypt) {
+  public init(password: String, privateKey: String, cacheDerivedKey: Bool = false) {
     cipher = .aes128Ctr
     cipherparams = Cipherparams()
+    kdf = .scrypt
     kdfparams = ScryptKdfparams(salt: nil)
-    self.kdf = kdf
+    let derivedKey = kdfparams.derivedKey(for: password)
+    if cacheDerivedKey {
+      cachedDerivedKey.cache(password: password, derivedKey: derivedKey)
+    }
+    ciphertext = Encryptor.AES128(key: derivedKey.tk_substring(to: 32), iv: cipherparams.iv, mode: Crypto.aesMode(cipher: cipher)).encrypt(hex: privateKey)
+    let macHex = derivedKey.tk_substring(from: 32) + ciphertext
+    mac = Encryptor.Keccak256().encrypt(hex: macHex)
+  }
+  
+  public init(password: String, privateKey: String, cacheDerivedKey: Bool = false, kdfparams: Kdfparams) {
+    cipher = .aes128Ctr
+    cipherparams = Cipherparams()
+    self.kdfparams = kdfparams
+    if kdfparams is PBKDF2Kdfparams {
+      kdf = .pbkdf2
+    } else {
+      kdf = .scrypt
+    }
     let derivedKey = kdfparams.derivedKey(for: password)
     if cacheDerivedKey {
       cachedDerivedKey.cache(password: password, derivedKey: derivedKey)
@@ -211,13 +229,13 @@ extension Crypto {
   }
 
   // https://en.wikipedia.org/wiki/PBKDF2
-  struct PBKDF2Kdfparams: Kdfparams {
+  public struct PBKDF2Kdfparams: Kdfparams {
     let c: Int // number of iterations
     let dklen: Int // length for the derived key. Must be >= 32
     let prf: String // a pseudorandom function of two parameters with output length hLen (e.g. a keyed HMAC)
     let salt: String // salt passed to PBKDF
 
-    init(json: JSONObject) throws {
+    public init(json: JSONObject) throws {
       guard let c = json["c"] as? Int,
         let dklen = json["dklen"] as? Int,
         let prf = json["prf"] as? String,
@@ -247,7 +265,7 @@ extension Crypto {
       self.salt = salt
     }
 
-    func toJSON() -> JSONObject {
+    public func toJSON() -> JSONObject {
       return [
         "c": c,
         "dklen": dklen,
@@ -256,7 +274,7 @@ extension Crypto {
       ]
     }
 
-    func derivedKey(for password: String) -> String {
+    public func derivedKey(for password: String) -> String {
       return Encryptor.PBKDF2(password: password, salt: salt, iterations: c, keyLength: dklen).encrypt()
     }
   }
@@ -279,7 +297,7 @@ extension Crypto {
       self.salt = salt ?? Data.tk_random(of: 32).tk_toHexString()
     }
 
-    init(json: JSONObject) throws {
+    public init(json: JSONObject) throws {
       guard let dklen = json["dklen"] as? Int,
         let n = json["n"] as? Int,
         let r = json["r"] as? Int,
@@ -300,7 +318,7 @@ extension Crypto {
       self.salt = salt
     }
 
-    func toJSON() -> JSONObject {
+    public func toJSON() -> JSONObject {
       return [
         "dklen": dklen,
         "n": n,
@@ -310,7 +328,7 @@ extension Crypto {
       ]
     }
 
-    func derivedKey(for password: String) -> String {
+    public func derivedKey(for password: String) -> String {
       return Encryptor.Scrypt(password: password, salt: salt, n: n, r: r, p: p).encrypt()
     }
   }
