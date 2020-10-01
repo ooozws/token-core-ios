@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CommonCrypto
 
 public protocol Kdfparams {
   init(json: JSONObject) throws
@@ -275,7 +276,11 @@ extension Crypto {
     }
 
     public func derivedKey(for password: String) -> String {
-      return Encryptor.PBKDF2(password: password, salt: salt, iterations: c, keyLength: dklen).encrypt()
+      if prf.lowercased() == "hmac-sha512" {
+        return Encryptor.PBKDF2(password: password, salt: salt, iterations: c, keyLength: dklen, variant: CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA512)).encrypt()
+      } else {
+        return Encryptor.PBKDF2(password: password, salt: salt, iterations: c, keyLength: dklen).encrypt()
+      }
     }
   }
 
