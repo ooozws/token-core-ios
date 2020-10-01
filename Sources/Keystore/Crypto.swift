@@ -22,7 +22,7 @@ public class Crypto {
     case aes128Cbc = "aes-128-cbc" // Version 1 fixed algorithm
   }
 
-  enum Kdf: String {
+  public enum Kdf: String {
     case scrypt, pbkdf2
   }
 
@@ -44,12 +44,11 @@ public class Crypto {
          If true, the caller can fetch derived key with `cachedDerivedKey(with password:)`,
          and should explictly call `clearDerivedKey()` afterwards.
    */
-  public init(password: String, privateKey: String, cacheDerivedKey: Bool = false) {
+  public init(password: String, privateKey: String, cacheDerivedKey: Bool = false, kdf: Kdf = .scrypt) {
     cipher = .aes128Ctr
     cipherparams = Cipherparams()
-    kdf = .scrypt
     kdfparams = ScryptKdfparams(salt: nil)
-
+    self.kdf = kdf
     let derivedKey = kdfparams.derivedKey(for: password)
     if cacheDerivedKey {
       cachedDerivedKey.cache(password: password, derivedKey: derivedKey)
