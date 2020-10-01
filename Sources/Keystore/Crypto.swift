@@ -255,7 +255,7 @@ extension Crypto {
       }
       self.dklen = dklen
 
-      if prf.lowercased() != "hmac-sha256" || prf.lowercased() != "hmac-sha512" {
+      if prf.lowercased() != "hmac-sha256" && prf.lowercased() != "hmac-sha512" {
         throw KeystoreError.prfUnsupported
       }
       self.prf = prf.lowercased()
