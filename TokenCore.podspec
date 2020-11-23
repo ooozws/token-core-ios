@@ -23,6 +23,6 @@ Pod::Spec.new do |s|
   s.xcconfig = { "SWIFT_INCLUDE_PATHS" => "$(PODS_ROOT)/TokenCore/Modules"}
   s.swift_version = "4.0"
   s.dependency "CryptoSwift", "1.3.0"
-  s.dependency "BigInt", "4.0"
+  s.dependency "BigInt", "5.2"
   s.dependency 'GRKOpenSSLFramework', '1.0.2.16'
 end
